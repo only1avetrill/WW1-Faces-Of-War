@@ -9,8 +9,8 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container">
-<div class="pt-4">
+    <div class="container my-lg-4">
+
     <div class="alert alert-light text-black">
 
     <div class="row">
@@ -27,7 +27,7 @@
 <h2><b>{{ face.name }} </b></h2>
         Годы жизни: <i>{{ face.lifetime_start }} - {{ face.lifetime_end }}</i><br>
         Страна: <i>{{ face.country }}</i><br>
-        Род войск: <i>{{ face.army }}</i><br>
+        Войска: <i>{{ face.army }}, {{ face.army_part }}</i><br>
         Должность/звание: <i>{{ face.rank|lower  }}</i><br><br>
             <i>{{ face.biography|safe }}</i>
                 </div></div>

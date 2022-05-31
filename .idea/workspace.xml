@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f664620-a67d-473d-b79f-8dc49b42fd25" name="Changes" comment="" />
+    <list default="true" id="0f664620-a67d-473d-b79f-8dc49b42fd25" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/add_article.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/add_article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/add_face.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/add_face.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/article_detailview.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/article_detailview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/edit_article.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/edit_article.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/edit_face.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/edit_face.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/facesofwar.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/facesofwar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/facesofwar_detailview.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/facesofwar_detailview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/quotes.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/quotes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +61,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
@@ -89,7 +109,7 @@
       <workItem from="1653929824613" duration="7943000" />
       <workItem from="1653938375223" duration="8387000" />
       <workItem from="1653986012720" duration="16047000" />
-      <workItem from="1654003103321" duration="85000" />
+      <workItem from="1654003103321" duration="8106000" />
     </task>
     <servers />
   </component>

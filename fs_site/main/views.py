@@ -211,4 +211,27 @@ def page_not_found_view(request, exception):
     return render(request, '404.html', status=404)
 
 def Quotes(request):
-    return render(request, 'quotes.html')
+    quote_list = Quote.objects.all()
+
+    data = {
+        'quote_list': quote_list,
+    }
+    return render(request, 'quotes.html', data)
+
+
+def AddQuotePage(request):
+    if request.method == 'POST':
+        form = AddQuoteForm(request.POST)
+        author = request.user.username
+        if form.is_valid():
+            form.save()
+            return redirect('quotes')
+        else:
+            return redirect('add_quote')
+        super(Event, self).save(*args, **kwargs)
+
+    form = AddQuoteForm
+    data = {
+        'form': form,
+    }
+    return render(request, 'add_quote.html', data)

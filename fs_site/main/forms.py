@@ -6,7 +6,7 @@ from .models import *
 class AddFaceForm(ModelForm):
     class Meta:
         model = Face
-        fields = ['name', 'country', 'rank', 'army', 'biography', 'photo', 'lifetime_start', 'lifetime_end', 'author']
+        fields = ['name', 'country', 'rank', 'army', 'army_part', 'biography', 'photo', 'lifetime_start', 'lifetime_end', 'author']
 
         widgets = {
             'name':TextInput(attrs={
@@ -25,6 +25,11 @@ class AddFaceForm(ModelForm):
                 'placeholder': 'Звание (должность)',
             }),
             'army': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Армия',
+            }),
+            'army_part': TextInput(attrs={
                 'class': 'form-control',
                 'style': 'height: 40px',
                 'placeholder': 'Род войск',
@@ -103,3 +108,46 @@ class AddArticleForm(ModelForm):
             })
         }
 
+class AddQuoteForm(ModelForm):
+    class Meta:
+        model = Quote
+        fields = ['text', 'photo', 'date', 'place', 'source', 'real_author', 'author']
+
+        widgets = {
+            'text': Textarea(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Текст цитаты',
+            }),
+             'photo': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Фото',
+            }),
+            'date': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Год',
+            }),
+            'place': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Место',
+            }),
+            'source': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Источник',
+            }),
+            'real_author': TextInput(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Автор',
+            }),
+            'author': TextInput(attrs={
+                'class': 'form-control',
+                'value': '',
+                'id': 'username_author',
+                'type': 'hidden',
+            })
+        }

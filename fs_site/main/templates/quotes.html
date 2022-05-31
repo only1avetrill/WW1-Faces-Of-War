@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Не найдено!{% endblock %}
+{% block title %}Цитаты{% endblock %}
 
 {% block mainbuttons %}
 <li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
@@ -9,12 +9,22 @@
 {% endblock %}
 
 {% block main %}
-    <div class="container text-white"><br><br><br>
-    <div style="font-size: 50px; text-align: center">Страница в разработке!</div>
-    <div style="font-size: 20px; text-align: center">Приходите позже...<br><br>
-    <a href='{% url 'home' %}' class="btn btn-outline-success btn-sm">На главную</a>
+    <div class="container my-lg-4">
+    {% for quote in quote_list %}
+    <div class="card mb-3">
+  <img class="card-img-top" src="{{ quote.photo }}" alt="Card image cap">
+  <div class="card-body">
+    <span class="card-text" align="justify"><i>{{ quote.text|safe }}</i></span><br>
+    <small class="text-muted"><i>
+        {% if quote.real_author %}<br>{{ quote.real_author }}{% endif %}
+        {% if quote.date %}<br>{{ quote.date }}{% endif %}
+        {% if quote.source %}<br>{{ quote.source }}{% endif %}
+        {% if quote.place %}<br>{{ quote.place }}{% endif %}</i>
+    </small>
+  </div>
+
+</div>
+    {% endfor %}
     </div>
 
-
-            </div>
 {% endblock %}

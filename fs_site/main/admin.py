@@ -10,7 +10,11 @@ class FaceAdmin(admin.ModelAdmin):
 class FaceCommentAdmin(admin.ModelAdmin):
     list_display = [field.name for field in FaceComment._meta.get_fields()]
 
+class QuoteAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in Quote._meta.get_fields()]
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Face, FaceAdmin)
 admin.site.register(FaceComment, FaceCommentAdmin)
+admin.site.register(Quote, QuoteAdmin)
 

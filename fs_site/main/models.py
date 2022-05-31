@@ -22,7 +22,8 @@ class Face(models.Model):
     name = models.CharField(max_length=100, verbose_name='Имя')
     country = models.CharField(max_length=300, verbose_name='Нация')
     rank = models.CharField(max_length=300, verbose_name='Должность')
-    army = models.CharField(max_length=300, verbose_name='Род войск')
+    army = models.CharField(max_length=300, verbose_name='Армия')
+    army_part = models.CharField(blank=True, max_length=300, verbose_name='Род войск')
     biography = models.TextField(blank=True, verbose_name='Краткая биография')
     photo = models.CharField(max_length=300, verbose_name='Ссылка на фото')
     lifetime_start = models.CharField(max_length=4, verbose_name='Год рождения')
@@ -41,4 +42,20 @@ class FaceComment(models.Model):
     face = models.ForeignKey(Face, on_delete=models.CASCADE, verbose_name='Личность', related_name='face_comment')
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
     creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время создания')
+
+class Quote(models.Model):
+    class Meta:
+        verbose_name = 'Цитата'
+        verbose_name_plural = 'Цитаты'
+
+    text = models.TextField(verbose_name='Текст')
+    photo = models.CharField(max_length=300, verbose_name='Ссылка на фото')
+    date = models.CharField(blank=True, max_length=4, verbose_name='Год')
+    place = models.TextField(blank=True, verbose_name='Место')
+    source = models.TextField(blank=True, verbose_name='Источник')
+    real_author = models.TextField(blank=True, verbose_name='Реальный автор')
+    author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Автор')
+
+    def __str__(self):
+        return self.text
 

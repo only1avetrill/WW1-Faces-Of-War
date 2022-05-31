@@ -16,6 +16,7 @@ urlpatterns = [
     path('edit-article/<int:id>', views.EditArticle),
     path('delete-article/<int:id>', views.DeleteArticle),
 
+    path('add-quote', views.AddQuotePage, name='add_quote'),
     path('quotes', views.Quotes, name='quotes'),
 
     path('logout', views.Logout, name='logout'),
