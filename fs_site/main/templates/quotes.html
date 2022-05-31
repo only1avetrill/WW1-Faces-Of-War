@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Не найдено!{% endblock %}
+
+{% block mainbuttons %}
+<li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+<li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    <li><span class="nav-link px-2 text-success">Цитаты</span></li>
+{% endblock %}
+
+{% block main %}
+    <div class="container text-white"><br><br><br>
+    <div style="font-size: 50px; text-align: center">Страница в разработке!</div>
+    <div style="font-size: 20px; text-align: center">Приходите позже...<br><br>
+    <a href='{% url 'home' %}' class="btn btn-outline-success btn-sm">На главную</a>
+    </div>
+
+
+            </div>
+{% endblock %}

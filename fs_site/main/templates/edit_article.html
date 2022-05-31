@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление личности{% endblock %}
+
+{% block mainbuttons %}
+<li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+<li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+<div class="pt-4">
+
+            <div class="alert alert-light text-black">
+            <form method="POST"> {% csrf_token %}
+                {{ form.title }}<br>
+                {{ form.snippet }}<br>
+                {{ form.media }}
+                {{ form.text }}
+                {{ form.author }} {{ form.creation_date }}<br>
+                <button class="btn btn-outline-success" type="submit" style="margin-top: 10px">Сохранить статью</button>
+        </form>
+                <script>
+            var name = '{{ user.id }}';
+            document.getElementById('username_author').value = name;
+        </script>
+            </div>
+
+                <div class="alert alert-light text-black">
+        <span class="text-muted"><i>Все записи проходят пост-модерацию, ведь мы надеемся на Вашу сознательность и порядочность. Записи с грубыми нарушениями будут удаляться, а их авторы могут быть заблокированы.<br>Если у Вас возникли проблемы с добавлением записи, но Вы очень хотите её добавить, свяжитесь с нами: <a href="mailto:rocknoxinteractive@gmail.com">rocknoxinteractive@gmail.com</a>.</i></span>
+
+
+
+                </div></div></div>
+{% endblock %}

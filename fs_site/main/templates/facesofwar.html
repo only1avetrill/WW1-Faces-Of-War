@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Война в лицах{% endblock %}
+
+{% block mainbuttons %}
+<li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+<li><span class="nav-link px-2 text-success">Война в лицах</span></li>
+    <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+{% endblock %}
+
+{% block main %}
+
+
+    <div class="container">
+<br>
+    <form class="form-inline my-lg-1" action="{% url 'faces_of_war' %}">
+        <input class="form-control" type="search" placeholder="Поиск..." aria-label="search" name="search">
+    </form><br>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
+
+{% for face in face %}
+<div class="col">
+<div class="card" style="width: 15rem;">
+  <img src="{{ face.photo }}" class="card-img-top" alt="{{ face.name }}">
+  <div class="card-body">
+    <h6 class="card-text text-center"><a href="{% url 'face_detail' face.pk %}">{{ face.name }}</a></h6>
+      <p class="card-text text-center">{{ face.lifetime_start }} - {{ face.lifetime_end }}<br> {{ face.country }}<br><br>{{ face.rank }}<br>{{ face.army }}</p>
+
+
+  </div>
+</div>
+</div>
+    {% endfor %}
+
+
+</div></div>
+
+
+{% endblock %}

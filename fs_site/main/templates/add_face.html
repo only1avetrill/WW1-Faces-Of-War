@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление личности{% endblock %}
+
+{% block mainbuttons %}
+<li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+<li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+<div class="pt-4">
+
+    <div class="row">
+        <div class="col-4">
+            <div class="alert alert-light text-black">
+            <form method="POST"> {% csrf_token %}
+                {{ form.name }}<br>
+                {{ form.lifetime_start }}<br>
+                {{ form.lifetime_end }}<br>
+                {{ form.country }}<br>
+                {{ form.army }}<br>
+                {{ form.rank }}<br>
+                {{ form.photo }}<br>
+                {{ form.biography }}<br>
+                {{ form.author }}
+                <button class="btn btn-outline-success" type="submit">Добавить личность</button>
+        </form>
+                <script>
+            var name = '{{ user.id }}';
+            document.getElementById('username_author').value = name;
+        </script>
+            </div></div>
+                <div class="col-8">
+                <div class="alert alert-light text-black">
+        <ul>
+  <li>Указывайте подлинные фамилию, имя и, если имеется, отчество. Допускаются сокращения имён, например, "Т. фон Бетман-Гольвег". Не указывайте псевдонимы и прозвища. Если информации об этом человеке нет, укажите "Неизвестный".</li>
+  <li>Указывайте подлинные годы рождения и смерти. Если информации об этом человеке нет, укажите "18ХХ"/"19XX".</li>
+  <li>Указывайте не ту страну, в которой родился человек, а ту к которой он именно принадлежит. Например, Манфред фон Рихтгофен родился в Польше, однако воевал в составе Имперских ВВС Германии, в этом случае указывается "Германия"/"Германская империя".</li>
+  <li>Если добавляемая личность не является солдатом, указывайте орган, к которому она относится. Например, Т. фон Бетман-Гольвег является рейхсканцлером, в этом случае указывается "Правительство".</li>
+            <li>Если добавляемая личность не является солдатом, указывайте её должность. Например, Т. фон Бетман-Гольвег является рейхсканцлером, в этом случае указывается "Рейхсканцлер".</li>
+            <li>Вводите только прямую ссылку на фотокарточку, желательно из надёжного хранилища, например, Github, т.к. в таком случае при падении нашей базы данных часть её останется в целости. Обязательно загружайте фотокарточки шириной в 280 пикселей и высотой в 400 пикселей.</li><br>
+            <span class="text-muted"><i>Все записи проходят пост-модерацию, ведь мы надеемся на Вашу сознательность и порядочность. Записи с грубыми нарушениями будут удаляться, а их авторы могут быть заблокированы.<br>Если у Вас возникли проблемы с добавлением записи, но Вы очень хотите её добавить, свяжитесь с нами: <a href="mailto:rocknoxinteractive@gmail.com">rocknoxinteractive@gmail.com</a>.</i></span>
+</ul>
+                </div></div>
+
+    <div class="text-muted" align="right">
+    </div>
+    </div>
+</div>
+    </div>
+{% endblock %}

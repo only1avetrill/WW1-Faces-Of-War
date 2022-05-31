@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block mainbuttons %}
+<li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+<li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+{% endblock %}
+
+{% block main %}
+    <div class="container">
+<div class="pt-5">
+    <div class="alert alert-light text-black">
+        <h2><b>{{ article.title }}
+        </b></h2>
+
+
+        <i>{{ article.text|safe }}</i>
+
+    </div>
+    {% if user.is_superuser %}
+            <a href="/edit-article/{{ article.id }}" class="btn btn-lg btn-outline-success btn-sm" style="margin-top: 10px; margin-left: 17px">Редактировать</a>
+            <a href="/delete-article/{{ article.id }}" class="btn btn-lg btn-outline-danger btn-sm" style="margin-top: 10px; margin-left: 17px">Удалить</a>
+            {% endif %}
+</div>
+    </div>
+{% endblock %}
