@@ -211,7 +211,7 @@ def page_not_found_view(request, exception):
     return render(request, '404.html', status=404)
 
 def Quotes(request):
-    quote_list = Quote.objects.all()
+    quote_list = Quote.objects.order_by('?')
 
     data = {
         'quote_list': quote_list,
@@ -235,3 +235,49 @@ def AddQuotePage(request):
         'form': form,
     }
     return render(request, 'add_quote.html', data)
+
+
+def FacesOfWarFrance(request):
+    faces = Face.objects.filter(country__icontains='Франция')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarRussia(request):
+    faces = Face.objects.filter(country__icontains='Российская империя')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarGreatBritain(request):
+    faces = Face.objects.filter(country__icontains='Великобритания')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarUSA(request):
+    faces = Face.objects.filter(country__icontains='США')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarSerbia(request):
+    faces = Face.objects.filter(country__icontains='Сербия')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarBelgium(request):
+    faces = Face.objects.filter(country__icontains='Бельгия')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarItaly(request):
+    faces = Face.objects.filter(country__icontains='Италия')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarGermany(request):
+    faces = Face.objects.filter(country__icontains='Германская империя')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarAustriaHungary(request):
+    faces = Face.objects.filter(country__icontains='Австро-Венгрия')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarOttoman(request):
+    faces = Face.objects.filter(country__icontains='Османская империя')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+def FacesOfWarBulgary(request):
+    faces = Face.objects.filter(country__icontains='Болгария')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)

@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f664620-a67d-473d-b79f-8dc49b42fd25" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="0f664620-a67d-473d-b79f-8dc49b42fd25" name="Changes" comment="Раздел цитат">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/add_article.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/add_article.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/add_face.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/add_face.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/article_detailview.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/article_detailview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/edit_article.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/edit_article.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/edit_face.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/edit_face.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/fs_site/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/fs_site/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/main/templates/facesofwar.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/facesofwar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/facesofwar_detailview.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/facesofwar_detailview.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/main/templates/quotes.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/quotes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/urls.py" afterDir="false" />
@@ -32,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -109,8 +99,17 @@
       <workItem from="1653929824613" duration="7943000" />
       <workItem from="1653938375223" duration="8387000" />
       <workItem from="1653986012720" duration="16047000" />
-      <workItem from="1654003103321" duration="8106000" />
+      <workItem from="1654003103321" duration="8207000" />
+      <workItem from="1654012667203" duration="5300000" />
     </task>
+    <task id="LOCAL-00001" summary="Раздел цитат">
+      <created>1654011305302</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654011305302</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,5 +130,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="Раздел цитат" />
+    <option name="LAST_COMMIT_MESSAGE" value="Раздел цитат" />
   </component>
 </project>
