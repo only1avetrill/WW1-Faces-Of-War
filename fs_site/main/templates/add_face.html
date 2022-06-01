@@ -25,7 +25,12 @@
                 {{ form.photo }}<br>
                 {{ form.biography }}<br>
                 {{ form.author }}
-                <button class="btn btn-outline-success" type="submit">Добавить личность</button>
+                <div align="center">
+                <div style="width: 49%; display: inline-block">{{ form.type }}</div>
+                <button class="btn btn-outline-success" style="width: 49%; display: inline-block; margin-bottom: 5px" type="submit">Добавить личность</button>
+                </div>
+
+
         </form>
                 <script>
             var name = '{{ user.id }}';

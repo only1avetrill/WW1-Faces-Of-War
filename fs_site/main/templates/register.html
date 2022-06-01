@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block mainbuttons %}
+    <li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+    <li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+{% endblock %}
+
+{% block main %}
+    <div class="container" align="center" style="padding: 5%">
+        <div class="alert alert-light text-black" style="width: 50%">
+            <form method="POST"> {% csrf_token %}
+                <div class="row">
+        <div class="col-4" style="width: 49%">
+                {{ form.username }}<br>
+                {{ form.password1 }}<br>
+            {{ form.password2 }}<br></div>
+                    <div class="col-8" style="width: 49%">
+                {{ form.first_name }}<br>
+                {{ form.last_name }}<br>
+                        {{ form.email }}<br>
+                    </div>
+
+                </div>
+                <div align="left" class="text-danger">
+                {{ form.errors }}
+                </div>
+                <button class="btn btn-outline-success" type="submit">Регистрация</button>
+            </form>
+            <br><small class="text-muted"><i>Уже есть учётная запись? <a href="{% url 'auth' %}">Авторизуйтесь!</a></i></small>
+        </div>
+    </div>
+{% endblock %}

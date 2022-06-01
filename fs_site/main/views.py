@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.http import Http404
@@ -11,8 +12,10 @@ from .forms import *
 from django.views.generic import DetailView
 from django.core.paginator import Paginator
 
-#Служебные функции
-from django.contrib.auth import logout
+# Служебные функции
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
+
 
 def Home(request):
     article_list = Article.objects.order_by('-creation_date')
@@ -26,8 +29,13 @@ def Home(request):
     }
     return render(request, 'home.html', data)
 
+
+def Main(request):
+    return redirect('home')
+
+
 def FacesOfWar(request):
-    faces = Face.objects.all()
+    faces = Face.objects.order_by('?')
 
     search = request.GET.get('search', '')
     if search:
@@ -38,9 +46,11 @@ def FacesOfWar(request):
     }
     return render(request, 'facesofwar.html', data)
 
+
 class ArticleDetailView(DetailView):
     model = Article
     template_name = 'article_detailview.html'
+
 
 class FacesOfWarDetailView(FormMixin, DetailView):
     model = Face
@@ -68,8 +78,8 @@ class FacesOfWarDetailView(FormMixin, DetailView):
         return super(FacesOfWarDetailView, self).form_valid(form)
 
 
-
-#Добавление
+# Добавление
+@login_required
 def AddFacePage(request):
     if request.method == 'POST':
         form = AddFaceForm(request.POST)
@@ -87,6 +97,7 @@ def AddFacePage(request):
     }
     return render(request, 'add_face.html', data)
 
+@login_required
 def AddArticlePage(request):
     if request.method == 'POST':
         form = AddArticleForm(request.POST)
@@ -105,7 +116,6 @@ def AddArticlePage(request):
     return render(request, 'add_article.html', data)
 
 
-
 @login_required
 def DeleteFace(request, id):
     face = Face.objects.get(id=id)
@@ -119,6 +129,7 @@ def DeleteFace(request, id):
 
     return redirect('faces_of_war')
 
+
 @login_required
 def DeleteArticle(request, id):
     article = Article.objects.get(id=id)
@@ -131,6 +142,7 @@ def DeleteArticle(request, id):
         raise Http404
 
     return redirect('home')
+
 
 @login_required
 def EditFace(request, id):
@@ -163,6 +175,7 @@ def EditFace(request, id):
     }
 
     return render(request, 'edit_face.html', data)
+
 
 @login_required
 def EditArticle(request, id):
@@ -197,18 +210,19 @@ def EditArticle(request, id):
     return render(request, 'edit_article.html', data)
 
 
-
-
-
-
-
-#Служебные функции
+# Служебные функции
 def Logout(request):
     logout(request)
     return redirect('home')
 
+
 def page_not_found_view(request, exception):
     return render(request, '404.html', status=404)
+
+
+def server_error_view(request):
+    return render(request, '500.html', status=500)
+
 
 def Quotes(request):
     quote_list = Quote.objects.order_by('?')
@@ -218,7 +232,7 @@ def Quotes(request):
     }
     return render(request, 'quotes.html', data)
 
-
+@login_required
 def AddQuotePage(request):
     if request.method == 'POST':
         form = AddQuoteForm(request.POST)
@@ -241,43 +255,124 @@ def FacesOfWarFrance(request):
     faces = Face.objects.filter(country__icontains='Франция')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarRussia(request):
     faces = Face.objects.filter(country__icontains='Российская империя')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarGreatBritain(request):
     faces = Face.objects.filter(country__icontains='Великобритания')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarUSA(request):
     faces = Face.objects.filter(country__icontains='США')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarSerbia(request):
     faces = Face.objects.filter(country__icontains='Сербия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarBelgium(request):
     faces = Face.objects.filter(country__icontains='Бельгия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarItaly(request):
     faces = Face.objects.filter(country__icontains='Италия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarGermany(request):
     faces = Face.objects.filter(country__icontains='Германская империя')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarAustriaHungary(request):
     faces = Face.objects.filter(country__icontains='Австро-Венгрия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarOttoman(request):
     faces = Face.objects.filter(country__icontains='Османская империя')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
 def FacesOfWarBulgary(request):
     faces = Face.objects.filter(country__icontains='Болгария')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+
+def Combatants(request):
+    faces = Face.objects.filter(type__icontains='Военный')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+
+
+def NonCombatants(request):
+    faces = Face.objects.filter(type__icontains='Гражданский')
+    data = {'face': faces}
+    return render(request, 'facesofwar.html', data)
+
+
+def NewsPage(request):
+    news_list = News.objects.all()
+    p = Paginator(News.objects.all(), 3)
+    page = request.GET.get('page')
+    news_page = p.get_page(page)
+
+    data = {
+        'news_list': news_list,
+        'news_page': news_page
+    }
+    return render(request, 'news.html', data)
+
+
+def Auth(request):
+    form = AuthForm
+    data = {'form': form}
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.success(request, 'Неверный логин или пароль!')
+            return render(request, 'auth.html', data)
+    else:
+        user = request.user
+        if user.is_authenticated:
+            return redirect('home')
+        return render(request, 'auth.html', data)
+
+def Register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = RegisterForm()
+
+
+    return render(request, 'register.html', {'form': form})

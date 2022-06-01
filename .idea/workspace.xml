@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0f664620-a67d-473d-b79f-8dc49b42fd25" name="Changes" comment="Раздел цитат">
+    <list default="true" id="0f664620-a67d-473d-b79f-8dc49b42fd25" name="Changes" comment="Наполнение базы для теста">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/fs_site/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/fs_site/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/fs_site/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/fs_site/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/add_face.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/add_face.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/edit_face.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/edit_face.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/main/templates/facesofwar.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/facesofwar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fs_site/main/templates/quotes.html" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/templates/quotes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fs_site/main/urlsCountries.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/urlsCountries.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fs_site/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fs_site/main/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,13 +28,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -54,7 +61,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="App test" type="Python.DjangoServer" factoryName="Django server">
@@ -100,7 +107,13 @@
       <workItem from="1653938375223" duration="8387000" />
       <workItem from="1653986012720" duration="16047000" />
       <workItem from="1654003103321" duration="8207000" />
-      <workItem from="1654012667203" duration="5300000" />
+      <workItem from="1654012667203" duration="5570000" />
+      <workItem from="1654028142604" duration="179000" />
+      <workItem from="1654028339583" duration="104000" />
+      <workItem from="1654081054107" duration="6665000" />
+      <workItem from="1654092935676" duration="1582000" />
+      <workItem from="1654097047905" duration="1934000" />
+      <workItem from="1654101946446" duration="12643000" />
     </task>
     <task id="LOCAL-00001" summary="Раздел цитат">
       <created>1654011305302</created>
@@ -109,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654011305302</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Наполнение базы для теста">
+      <created>1654022846155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1654022846155</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +151,7 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="Раздел цитат" />
-    <option name="LAST_COMMIT_MESSAGE" value="Раздел цитат" />
+    <MESSAGE value="Наполнение базы для теста" />
+    <option name="LAST_COMMIT_MESSAGE" value="Наполнение базы для теста" />
   </component>
 </project>

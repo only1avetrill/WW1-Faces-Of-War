@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
+
+
 class Article(models.Model):
     class Meta:
         verbose_name = 'Статья'
@@ -15,6 +17,11 @@ class Article(models.Model):
 
 
 class Face(models.Model):
+    type = (
+        ('Гражданский', 'Гражданский'),
+        ('Военный', 'Военный')
+    )
+
     class Meta:
         verbose_name = 'Личность'
         verbose_name_plural = 'Личности'
@@ -23,6 +30,7 @@ class Face(models.Model):
     country = models.CharField(max_length=300, verbose_name='Нация')
     rank = models.CharField(max_length=300, verbose_name='Должность')
     army = models.CharField(max_length=300, verbose_name='Армия')
+    type = models.CharField(max_length=300, verbose_name='Тип', choices = type)
     army_part = models.CharField(blank=True, max_length=300, verbose_name='Род войск')
     biography = models.TextField(blank=True, verbose_name='Краткая биография')
     photo = models.CharField(max_length=300, verbose_name='Ссылка на фото')
@@ -58,4 +66,16 @@ class Quote(models.Model):
 
     def __str__(self):
         return self.text
+
+class News(models.Model):
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
+
+    title = models.CharField(max_length=100, verbose_name='Новость')
+    snippet = models.CharField(max_length=5000, verbose_name='Сниппет')
+    text = RichTextField(verbose_name='Текст новости', null=False, blank=False)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Автор')
+    creation_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата и время создания')
+
 

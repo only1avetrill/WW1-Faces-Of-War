@@ -13,4 +13,7 @@ urlpatterns = [
     path('faces-of-war/AustriaHungary/', views.FacesOfWarAustriaHungary, name='faces_of_war_AUSTRIAHUNGARY'),
     path('faces-of-war/Ottoman/', views.FacesOfWarOttoman, name='faces_of_war_OTTOMAN'),
     path('faces-of-war/Bulgary/', views.FacesOfWarBulgary, name='faces_of_war_BULGARY'),
+
+    path('faces-of-war/Combatants/', views.Combatants, name='faces_of_war_COMBATANTS'),
+    path('faces-of-war/NonCombatants/', views.NonCombatants, name='faces_of_war_NONCOMBATANTS'),
 ]

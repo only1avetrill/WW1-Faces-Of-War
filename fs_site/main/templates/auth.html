@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block mainbuttons %}
+    <li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+    <li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+{% endblock %}
+
+{% block main %}
+    <div class="container" align="center" style="padding: 5%">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-info" role="alert" style="width: 35%">
+                    <strong>{{ message }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div class="alert alert-light text-black" style="width: 35%">
+            <form method="POST"> {% csrf_token %}
+                {{ form.username }}<br>
+                {{ form.password }}<br>
+                <button class="btn btn-outline-success" type="submit">Авторизация</button>
+            </form>
+            <br><small class="text-muted"><i>Нет учётной записи? <a href="{% url 'register' %}">Создайте её!</a></i></small>
+        </div>
+    </div>
+{% endblock %}

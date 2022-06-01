@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.Home, name='home'),
     path('faces-of-war/', views.FacesOfWar, name='faces_of_war'),
+    #path('news/', views.NewsPage, name='news'),
 
     path('<int:pk>', views.ArticleDetailView.as_view(), name='article_detail'),
     path('faces-of-war/<int:pk>', views.FacesOfWarDetailView.as_view(), name='face_detail'),
@@ -18,10 +19,7 @@ urlpatterns = [
 
     path('add-quote/', views.AddQuotePage, name='add_quote'),
     path('quotes/', views.Quotes, name='quotes'),
-
-    path('logout/', views.Logout, name='logout'),
-
-    path('faces-of-war/Germany/', views.FacesOfWarGermany, name='faces_of_war_GERMANY'),
 ]
 
 handler404 = "main.views.page_not_found_view"
+handler500 = "main.views.server_error_view"
