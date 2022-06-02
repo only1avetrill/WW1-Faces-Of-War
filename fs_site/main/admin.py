@@ -16,9 +16,13 @@ class FaceCommentAdmin(admin.ModelAdmin):
 class QuoteAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Quote._meta.get_fields()]
 
+class QuoteOfTheDayAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in QuoteOfTheDay._meta.get_fields()]
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(News, NewsAdmin)
 admin.site.register(Face, FaceAdmin)
 admin.site.register(FaceComment, FaceCommentAdmin)
 admin.site.register(Quote, QuoteAdmin)
+admin.site.register(QuoteOfTheDay, QuoteOfTheDayAdmin)
 

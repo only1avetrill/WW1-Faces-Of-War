@@ -50,7 +50,26 @@
         </div>
       </div>
 
-<div class="pt-5">
+
+
+     <div align="center" style="margin-top: 15px">
+    <div>
+    <div class="card mb-3" style="width: 100%" align="center">
+    <div class="card-header">Случайная цитата о войне</div>
+  <div class="card-body">
+    <span class="card-text" align="center"><strong><i>{{ quote.text|safe }}</i></strong></span><br>
+    <small class="text-muted"><i>
+        {% if quote.real_author %}<br>{{ quote.real_author }}{% endif %}
+        {% if quote.date %}<br>{{ quote.date }}{% endif %}
+        {% if quote.source %}<br>{{ quote.source }}{% endif %}
+        {% if quote.place %}<br>{{ quote.place }}{% endif %}</i>
+    </small>
+  </div>
+</div>
+    </div></div>
+
+
+<div>
     {% for article in article_page %}
     <div class="alert alert-light text-black">
         <h2><b><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></b></h2>

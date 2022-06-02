@@ -1,6 +1,8 @@
+import random
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.db.models import Max
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -23,9 +25,14 @@ def Home(request):
     page = request.GET.get('page')
     article_page = p.get_page(page)
 
+    max_id = QuoteOfTheDay.objects.all().aggregate(max_id=Max("id"))['max_id']
+    pk = random.randint(1, max_id)
+    quote = QuoteOfTheDay.objects.get(pk=pk)
+
     data = {
         'article_list': article_list,
-        'article_page': article_page
+        'article_page': article_page,
+        'quote': quote
     }
     return render(request, 'home.html', data)
 
@@ -99,20 +106,23 @@ def AddFacePage(request):
 
 @login_required
 def AddArticlePage(request):
-    if request.method == 'POST':
-        form = AddArticleForm(request.POST)
-        author = request.user.username
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-        else:
-            return redirect('add_article')
-        super(Event, self).save(*args, **kwargs)
+    if request.user.is_superuser:
+        if request.method == 'POST':
+            form = AddArticleForm(request.POST)
+            author = request.user.username
+            if form.is_valid():
+                form.save()
+                return redirect('home')
+            else:
+                return redirect('add_article')
+            super(Event, self).save(*args, **kwargs)
 
-    form = AddArticleForm
-    data = {
-        'form': form,
-    }
+        form = AddArticleForm
+        data = {
+            'form': form,
+        }
+    else:
+        raise Http404
     return render(request, 'add_article.html', data)
 
 
@@ -225,10 +235,10 @@ def server_error_view(request):
 
 
 def Quotes(request):
-    quote_list = Quote.objects.order_by('?')
+    quote = Quote.objects.order_by('?')
 
     data = {
-        'quote_list': quote_list,
+        'quote': quote,
     }
     return render(request, 'quotes.html', data)
 
@@ -255,78 +265,67 @@ def FacesOfWarFrance(request):
     faces = Face.objects.filter(country__icontains='Франция')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarRussia(request):
     faces = Face.objects.filter(country__icontains='Российская империя')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarGreatBritain(request):
     faces = Face.objects.filter(country__icontains='Великобритания')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarUSA(request):
     faces = Face.objects.filter(country__icontains='США')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarSerbia(request):
     faces = Face.objects.filter(country__icontains='Сербия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarBelgium(request):
     faces = Face.objects.filter(country__icontains='Бельгия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarItaly(request):
     faces = Face.objects.filter(country__icontains='Италия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarGermany(request):
     faces = Face.objects.filter(country__icontains='Германская империя')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarAustriaHungary(request):
     faces = Face.objects.filter(country__icontains='Австро-Венгрия')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarOttoman(request):
     faces = Face.objects.filter(country__icontains='Османская империя')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def FacesOfWarBulgary(request):
     faces = Face.objects.filter(country__icontains='Болгария')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def Combatants(request):
     faces = Face.objects.filter(type__icontains='Военный')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
-
-
 def NonCombatants(request):
     faces = Face.objects.filter(type__icontains='Гражданский')
     data = {'face': faces}
     return render(request, 'facesofwar.html', data)
+
+def QuotesLiterature(request):
+    quotes = Quote.objects.filter(type__icontains='Литература')
+    data = {'quote': quotes}
+    return render(request, 'quotes.html', data)
+def QuotesDocument(request):
+    quotes = Quote.objects.filter(type__icontains='Документ')
+    data = {'quote': quotes}
+    return render(request, 'quotes.html', data)
+def QuotesMemories(request):
+    quotes = Quote.objects.filter(type__icontains='Воспоминания')
+    data = {'quote': quotes}
+    return render(request, 'quotes.html', data)
 
 
 def NewsPage(request):
@@ -373,6 +372,4 @@ def Register(request):
             return redirect('home')
     else:
         form = RegisterForm()
-
-
     return render(request, 'register.html', {'form': form})

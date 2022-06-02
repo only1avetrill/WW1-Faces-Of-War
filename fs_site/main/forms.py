@@ -160,7 +160,7 @@ class AddArticleForm(ModelForm):
 class AddQuoteForm(ModelForm):
     class Meta:
         model = Quote
-        fields = ['text', 'photo', 'date', 'place', 'source', 'real_author', 'author']
+        fields = ['text', 'photo', 'date', 'place', 'source', 'real_author', 'author', 'type']
 
         widgets = {
             'text': Textarea(attrs={
@@ -198,5 +198,10 @@ class AddQuoteForm(ModelForm):
                 'value': '',
                 'id': 'username_author',
                 'type': 'hidden',
-            })
+            }),
+            'type': Select(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Тип',
+            }),
         }

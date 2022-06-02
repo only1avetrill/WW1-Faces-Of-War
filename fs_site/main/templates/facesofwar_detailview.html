@@ -17,7 +17,7 @@
         <div class="col-3">
         <img src="{{ face.photo }}" alt="{{ face.name }}" width="280px" height="400px" style="border-radius: 3%;">
             <a href='{% url 'faces_of_war' %}' class="btn btn-lg btn-outline-dark btn-sm" style="margin-top: 10px">Назад</a>
-            {% if user.is_superuser %}
+            {% if user.id == face.author.id or user.is_superuser %}
             <a href="/edit-face/{{ face.id }}" class="btn btn-lg btn-outline-success btn-sm" style="margin-top: 10px; margin-left: 17px">Редактировать</a>
             <a href="/delete-face/{{ face.id }}" class="btn btn-lg btn-outline-danger btn-sm" style="margin-top: 10px; margin-left: 17px">Удалить</a>
             {% endif %}
