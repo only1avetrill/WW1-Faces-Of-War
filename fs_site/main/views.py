@@ -1,4 +1,6 @@
 import random
+from datetime import timedelta
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
@@ -7,6 +9,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic.edit import FormMixin
+from online_users.models import OnlineUserActivity
 
 from .models import *
 from .forms import *
@@ -225,13 +228,43 @@ def Logout(request):
     logout(request)
     return redirect('home')
 
-
 def page_not_found_view(request, exception):
     return render(request, '404.html', status=404)
 
-
 def server_error_view(request):
     return render(request, '500.html', status=500)
+
+def About(request):
+    faces_count = Face.objects.count()
+    faces_count_military = Face.objects.filter(type__contains='Военный').count()
+    faces_count_civil = Face.objects.filter(type__contains='Гражданский').count()
+
+    quote_count = Quote.objects.count()
+    quote_count_literature = Quote.objects.filter(type__contains='Литература').count()
+    quote_count_document = Quote.objects.filter(type__contains='Документ').count()
+    quote_count_memories = Quote.objects.filter(type__contains='Воспоминания').count()
+
+    user_activity_objects = OnlineUserActivity.get_user_activities((timedelta(minutes=3)))
+    number_of_active_users = user_activity_objects.count()
+
+    comments_count = FaceComment.objects.count()
+    all_count = (faces_count + quote_count)
+    users_count = User.objects.count()
+
+    data = {
+        'faces_count': faces_count,
+        'faces_count_military': faces_count_military,
+        'faces_count_civil': faces_count_civil,
+        'quote_count': quote_count,
+        'quote_count_literature': quote_count_literature,
+        'quote_count_document': quote_count_document,
+        'quote_count_memories': quote_count_memories,
+        'all_count': all_count,
+        'comments_count': comments_count,
+        'users_count': users_count,
+        'online_users': number_of_active_users,
+    }
+    return render(request, 'about.html', data)
 
 
 def Quotes(request):
