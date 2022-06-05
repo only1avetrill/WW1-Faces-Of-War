@@ -21,20 +21,25 @@ body {
 		<header class="p-3 bg-dark text-white">
 			<div class="container">
 				<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> {% block mainbuttons %}{% endblock %} </ul> {% if user.is_authenticated %}
+					<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"> {% block mainbuttons %}{% endblock %} </ul>
+
+                    {% if request.user_agent.is_pc %}
+                    {% if user.is_authenticated %}
 					<div class="text-end"><span class="px-2 text-secondary">Здравствуйте, <strong>{{ user.first_name }}</strong>!</span> {% endif %}
 						<button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"> Действия</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"> {% if user.is_superuser %}
 							<li><a class="dropdown-item" href="/admin" target="_blank">Панель управления</a></li>
-							<ul class="nav justify-content-center border-bottom"></ul> {% endif %} {% if user.is_authenticated %} {% if user.is_superuser %}
+							<ul class="nav justify-content-center border-bottom"></ul> {% endif %}
+                            {% if user.is_authenticated %} {% if user.is_superuser %}
 							<li><a class="dropdown-item" href="{% url 'add_article' %}">Добавить статью</a> </li> {% endif %}
-							<li><a class="dropdown-item" href="{% url 'add_face' %}">Добавить личность</a> </li>
+                            <li><a class="dropdown-item" href="{% url 'add_face' %}">Добавить личность</a> </li>
 							<li><a class="dropdown-item" href="{% url 'add_quote' %}">Добавить цитату</a> </li>
 							<ul class="nav justify-content-center border-bottom"></ul>
 							<li><a class="dropdown-item" href="{% url 'logout' %}">Выход</a></li> {% else %}
 							<li><a class="dropdown-item" href="{% url 'auth' %}">Авторизация</a></li>
 							<li><a class="dropdown-item" href="{% url 'register' %}">Регистрация</a></li> {% endif %} </ul>
 					</div>
+                {% endif %}
 				</div>
 			</div>
 		</header> {% block main %} {% endblock %} </main>
@@ -42,7 +47,12 @@ body {
 <div class="container bg-dark">
 	<footer class="py-3 my-4">
 		<ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
-		<p class="text-muted">© 2022 Rocknox Interactive | <a href='{% url 'about' %}'>Аналитика - О сайте - Связь с нами</a> </footer>
+        {% if request.user_agent.is_pc %}
+		<p class="text-muted">© 2022 Rocknox Interactive | <a href='{% url 'about' %}'>О сайте</a>
+        {% else %}
+        <p class="text-muted" align="center">© 2022 Rocknox Interactive | <a href='{% url 'about' %}'>О сайте</a>
+        {% endif %}
+    </footer>
 </div>
 
 </html>

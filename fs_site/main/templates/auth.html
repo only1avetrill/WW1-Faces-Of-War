@@ -5,10 +5,13 @@
 {% block mainbuttons %}
     <li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
     <li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    {% if request.user_agent.is_pc %}
     <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+    {% endif %}
 {% endblock %}
 
 {% block main %}
+    {% if request.user_agent.is_pc %}
     <div class="container" align="center" style="padding: 5%">
         {% if messages %}
             {% for message in messages %}
@@ -26,4 +29,14 @@
             <br><small class="text-muted"><i>Нет учётной записи? <a href="{% url 'register' %}">Создайте её!</a></i></small>
         </div>
     </div>
+
+     {% else %}
+<div class="container text-white">
+    <div style="font-size: 200px; text-align: center">:(</div>
+    <div style="font-size: 20px; text-align: center">Страница пока недоступна для мобильных устройств.<br><br>
+    <a href='{% url 'home' %}' class="btn btn-outline-success btn-sm">На главную</a>
+    </div>
+            </div>
+    {% endif %}
+
 {% endblock %}

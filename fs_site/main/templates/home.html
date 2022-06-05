@@ -5,7 +5,9 @@
 {% block mainbuttons %}
     <li><span class="nav-link px-2 text-success">Главная</span></li>
 <li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    {% if request.user_agent.is_pc %}
     <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+    {% endif %}
 {% endblock %}
 
 {% block main %}
@@ -37,6 +39,7 @@
             </div>
           </div>
         </div>
+          {% if request.user_agent.is_pc %}
     <div class="col">
           <div class="card shadow-sm">
               <img class="bd-placeholder-img card-img-top" src="https://user-images.githubusercontent.com/75385700/170894231-3f726382-2c11-4b12-87c4-adae2a0f4619.png" width="50%" height="50%" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#55595c"></rect></img>
@@ -48,6 +51,7 @@
             </div>
           </div>
         </div>
+            {% endif %}
       </div>
 
 

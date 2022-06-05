@@ -5,10 +5,13 @@
 {% block mainbuttons %}
 <li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
 <li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    {% if request.user_agent.is_pc %}
     <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+    {% endif %}
 {% endblock %}
 
 {% block main %}
+    {% if request.user_agent.is_pc %}
     <div class="container my-lg-4">
 
 
@@ -29,8 +32,15 @@
 
                 <div class="alert alert-light text-black">
         <span class="text-muted"><i>Все записи проходят пост-модерацию, ведь мы надеемся на Вашу сознательность и порядочность. Записи с грубыми нарушениями будут удаляться, а их авторы могут быть заблокированы.<br>Если у Вас возникли проблемы с добавлением записи, но Вы очень хотите её добавить, свяжитесь с нами: <a href="mailto:rocknoxinteractive@gmail.com">rocknoxinteractive@gmail.com</a>.</i></span>
-
-
-
                 </div></div>
+
+     {% else %}
+<div class="container text-white">
+    <div style="font-size: 200px; text-align: center">:(</div>
+    <div style="font-size: 20px; text-align: center">Страница пока недоступна для мобильных устройств.<br><br>
+    <a href='{% url 'home' %}' class="btn btn-outline-success btn-sm">На главную</a>
+    </div>
+            </div>
+    {% endif %}
+
 {% endblock %}

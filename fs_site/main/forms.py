@@ -154,6 +154,11 @@ class AddArticleForm(ModelForm):
                 'value': '',
                 'id': 'username_author',
                 'type': 'hidden',
+            }),
+            'text': Textarea(attrs={
+                'class': 'form-control',
+                'style': 'height: 40px',
+                'placeholder': 'Текст'
             })
         }
 

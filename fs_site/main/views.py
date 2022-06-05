@@ -394,6 +394,7 @@ def Auth(request):
         return render(request, 'auth.html', data)
 
 def Register(request):
+    user = request.user
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -405,4 +406,7 @@ def Register(request):
             return redirect('home')
     else:
         form = RegisterForm()
+
+    if user.is_authenticated:
+        return redirect('home')
     return render(request, 'register.html', {'form': form})

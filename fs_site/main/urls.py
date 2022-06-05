@@ -6,8 +6,8 @@ urlpatterns = [
     path('faces-of-war/', views.FacesOfWar, name='faces_of_war'),
     #path('news/', views.NewsPage, name='news'),
 
-    path('<int:pk>', views.ArticleDetailView.as_view(), name='article_detail'),
-    path('faces-of-war/<int:pk>', views.FacesOfWarDetailView.as_view(), name='face_detail'),
+    path('<int:pk>/', views.ArticleDetailView.as_view(), name='article_detail'),
+    path('faces-of-war/<int:pk>/', views.FacesOfWarDetailView.as_view(), name='face_detail'),
 
     path('add-face/', views.AddFacePage, name='add_face'),
     path('edit-face/<int:id>/', views.EditFace),

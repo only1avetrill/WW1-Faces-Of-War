@@ -5,14 +5,17 @@
 {% block mainbuttons %}
 <li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
 <li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    {% if request.user_agent.is_pc %}
     <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+    {% endif %}
 {% endblock %}
 
 {% block main %}
+{% if request.user_agent.is_pc %}
     <div class="container my-lg-4">
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="alert alert-light text-black">
             <form method="POST"> {% csrf_token %}
                 {{ form.name }}<br>
@@ -37,7 +40,7 @@
             document.getElementById('username_author').value = name;
         </script>
             </div></div>
-                <div class="col-8">
+                <div class="col-6">
                 <div class="alert alert-light text-black">
         <ul>
   <li>Указывайте подлинные фамилию, имя и, если имеется, отчество. Допускаются сокращения имён, например, "Т. фон Бетман-Гольвег". Не указывайте псевдонимы и прозвища. Если информации об этом человеке нет, укажите "Неизвестный".</li>
@@ -54,5 +57,14 @@
     </div>
     </div>
 </div>
+
+     {% else %}
+<div class="container text-white">
+    <div style="font-size: 200px; text-align: center">:(</div>
+    <div style="font-size: 20px; text-align: center">Страница пока недоступна для мобильных устройств.<br><br>
+    <a href='{% url 'home' %}' class="btn btn-outline-success btn-sm">На главную</a>
+    </div>
+            </div>
+    {% endif %}
 
 {% endblock %}

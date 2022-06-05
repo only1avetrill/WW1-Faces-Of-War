@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}О проекте{% endblock %}
+
+{% block mainbuttons %}
+<li><a href='{% url 'home' %}' class="nav-link px-2 text-secondary">Главная</a></li>
+<li><a href='{% url 'faces_of_war' %}' class="nav-link px-2 text-secondary">Война в лицах</a></li>
+    <li><a href='{% url 'quotes' %}' class="nav-link px-2 text-secondary">Цитаты</a></li>
+{% endblock %}
+
+{% block main %}
+    <div class="container my-lg-4">
+            <div class="alert alert-light text-black">
+                <b>{{ users_count }}</b> пользователь/-я/-ей зарегистрировались (<b>{{ online_users }}</b> в сети), добавили <b>{{ all_count }}</b> запись/-и/-ей и оставили <b>{{ comments_count }}</b> комментарий/-я/-ев.<br>
+                <b>{{ faces_count }}</b> личность/-и/-ей в базе, из них <b>{{ faces_count_military }}</b> военных, <b>{{ faces_count_civil }}</b> гражданских.<br>
+                <b>{{ quote_count }}</b> цитат/-а/-ы в базе, из них <b>{{ quote_count_literature }}</b> из литературы, <b>{{ quote_count_document }}</b> из документов, <b>{{ quote_count_memories }}</b> из воспоминаний.
+                <br><br><span class="text-muted"><i>Все записи проходят пост-модерацию, ведь мы надеемся на Вашу сознательность и порядочность. Записи с грубыми нарушениями будут удаляться, а их авторы могут быть заблокированы.<br>Если у Вас возникли проблемы с добавлением записи, но Вы очень хотите её добавить, свяжитесь с нами: <a href="mailto:rocknoxinteractive@gmail.com">rocknoxinteractive@gmail.com</a>.</i></span>
+            </div>
+
+<div class="row">
+    <div>
+
+    <div class="alert alert-light text-black">
+        <span>Первая мировая в личностях.<br>Этот сайт — своеобразный цифровой архив, база личностей и цитат Первой мировой войны. Известных и неизвестных, военных и гражданских... всех, причастных к Великой войне. Любой пользователь может добавить запись, чтобы сохранить память о всех, кто участвовал в одном из самых кровопролитных конфликтов в истории Европы. Это и является целью проекта.</span>
+                </div>
+    </div>
+<div>
+        <div class="alert alert-light text-black">
+        <span>Благодарность за помощь в тестировании сайта проекта выражается <a href="https://vk.com/justacold" target="_blank">Фёдору Яковенко</a>, <a href="https://vk.com/lednevb" target="_blank">Борису Ледневу</a>, <a href="https://vk.com/too_dark_fog" target="_blank">Александру Дмитриенко</a>.<br>
+            Благодарность за долгое и плодотворное сотрудничество выражается <a href="https://vk.com/vanilla_bourbon" target="_blank">Vanilla Bourbon</a> и его лидеру <a href="https://vk.com/sofiterner" target="_blank">Роману Лешкевичу</a>.<br><br>
+            <i>Forgotten Souls | <a href="https://t.me/fxrgxttensxuls" target="_blank">Телеграм</a> | <a href="https://vk.com/fxrgxttensxuls" target="_blank">ВКонтакте</a></i></span>
+        </div>
+
+             </div>
+</div>
+{% endblock %}

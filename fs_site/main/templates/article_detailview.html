@@ -19,10 +19,12 @@
         <i>{{ article.text|safe }}</i>
 
     </div>
+    {% if request.user_agent.is_pc %}
     {% if user.is_superuser %}
             <a href="/edit-article/{{ article.id }}" class="btn btn-lg btn-outline-success btn-sm" style="margin-top: 10px; margin-left: 17px">Редактировать</a>
             <a href="/delete-article/{{ article.id }}" class="btn btn-lg btn-outline-danger btn-sm" style="margin-top: 10px; margin-left: 17px">Удалить</a>
             {% endif %}
+    {% endif %}
 </div>
 
 {% endblock %}
